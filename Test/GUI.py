@@ -1,5 +1,7 @@
 from tkinter import *
 from tkinter import simpledialog
+
+import WeddingClass
 import test
 
 #Main menu of applaction used to access all other forms
@@ -75,7 +77,7 @@ class bookwedding:
         self.EntBedroomReserved.grid(row=9, column=1, pady=(25, 0), padx=(0, 25))
 
         btnAddBooking = Button(FrmWeddingBooking, text="Add Booking",
-                         command=lambda: test.createWedding(self.EntnumberOfguest.get(), self.EntnameOfContact.get(),
+                         command=lambda: WeddingClass.createWedding(self.EntnumberOfguest.get(), self.EntnameOfContact.get(),
                                                             self.EntAddress.get(),
                                                             self.EntContactNumber.get(), self.EntEventRoomNumber.get(),
                                                             self.EntDateOfEvent.get(),
@@ -84,6 +86,6 @@ class bookwedding:
 
         btnCloseForm = Button(FrmWeddingBooking , text="Cancel", command=exit)
 
-        btnAddBooking.grid(row=10, column=1, pady=(25, 50), padx=(0, 25),font=("arial",10),sticky=W )
+        btnAddBooking.grid(row=10, column=1, pady=(25, 50), padx=(0, 25) )
         btnCloseForm.grid(row=10, column=1, pady=(25, 50), padx=(0, 25) )
         FrmWeddingBooking.mainloop()
