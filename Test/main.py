@@ -1,7 +1,7 @@
 import tkinter as tk
 import test
-import Test.GUI
-import Test.dbHelper
+import GUI
+import dbHelper
 
 #root = tk.Tk()
 
@@ -10,7 +10,8 @@ import Test.dbHelper
 
 # print(Test.dbHelper.read_from_db())
 
-Test.GUI.mainMenu()
+dbHelper.connect()
+GUI.mainMenu()
 
 
 weddingList = []

@@ -1,4 +1,4 @@
-from Test import dbHelper
+import dbHelper
 
 
 class Event:
@@ -77,9 +77,17 @@ def addParty():
 
 
 def createParty(noOfGuest, nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking, BandName):
+    if BandName == "Lil’ Febrezey":
+        BandPrice = 100
+
+    elif BandName == "Prawn Mendes":
+        BandPrice = 250
+
+    elif BandName == "AB/CD":
+        BandPrice = 500
 
     NewParty = Party(int(noOfGuest), nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking,
-                         BandName)
+                         BandName,BandPrice)
     return dbHelper.insertParty(NewParty)
 
 

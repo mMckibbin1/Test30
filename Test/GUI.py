@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import simpledialog
 import test
-from Test import dbHelper
+import dbHelper
 
 #Main menu of applaction used to access all other forms
 class mainMenu:
@@ -208,14 +208,7 @@ class bookParty:
         self.EntBandName.grid(row=8, column=1, pady=(25, 0), padx=(0, 25))
 
 
-        if self.EntBandName == "Lil’ Febrezey":
-            self.bandPrice = 100
 
-        elif self.EntBandName == "Prawn Mendes":
-            self.bandPrice = 250
-
-        elif self.EntBandName == "AB/CD":
-            self.bandPrice = 500
 
         btnCloseForm = Button(FrmPartyBooking, text="Cancel", command=FrmPartyBooking.quit)
 
@@ -227,8 +220,7 @@ class bookParty:
                                                                   self.EntEventRoomNumber.get(),
                                                                   self.EntDateOfEvent.get(),
                                                                   self.EntDateOfBooking.get(),
-                                                                  self.EntBandName.get(),
-                                                                  self.bandPrice), exit])
+                                                                  self.EntBandName.get()), exit])
 
         btnAddBooking.grid(row=10, column=1, pady=(25, 50), padx=(0, 25))
         btnCloseForm.grid(row=10, column=2, pady=(25, 50), padx=(0, 25))
