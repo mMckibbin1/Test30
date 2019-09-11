@@ -1,13 +1,13 @@
 import tkinter as tk
 import test
-import GUI
+import Test.GUI
 
 #root = tk.Tk()
 
 #app = GUI.bookwedding(root)
 #root.mainloop()
 
-GUI.mainMenu()
+Test.GUI.mainMenu()
 
 
 weddingList = []
