@@ -1,3 +1,6 @@
+from Test import dbTest2
+
+
 class Event:
     def __init__(self, noGuests: object, nameOfContact: object, address: object, contactNo: object, eventRoomNo: object, dateOfEvent: object, dateOfBooking: object,
                  costPerHead: object) -> object:
@@ -87,11 +90,11 @@ def addWedding():
     return print(Newwedding.nameOfContact)
 
 
-def createWedding(noOfGuest,nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking, BandName, bedRoomsRes):
+def createwedding(noOfGuest, nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking, BandName, bedRoomsRes):
 
     Newwedding = Wedding(int(noOfGuest), nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking,
                          BandName, bedRoomsRes)
-    return print(Newwedding.nameOfContact)
+    return dbTest2.insertwedding(Newwedding)
 
 
 

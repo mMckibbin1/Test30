@@ -39,30 +39,62 @@ class bookwedding:
         FrmWeddingBooking.resizable(0, 0)
         FrmWeddingBooking.config(background="powder blue")
 
-        Label(FrmWeddingBooking, text="Please fill in the details for the wedding event you are booking", font=("arial", 15, "bold"), bg="powder blue") \
+        noGuests = IntVar()
+        nameOfContact = StringVar()
+        address = StringVar()
+        contactNo = StringVar()
+        eventRoomNo = StringVar()
+        dateOfEvent = StringVar()
+        dateOfBooking = StringVar()
+        bandName = StringVar()
+        noBedroomsReserved = IntVar()
+
+        Label(FrmWeddingBooking, text="Please fill in the details for the wedding event you are booking",
+              font=("arial", 15, "bold"), bg="powder blue") \
             .grid(row=0, pady=(25, 0), padx=(10, 10), columnspan=3)
 
+        Label(FrmWeddingBooking, text="Number of guest", font=("arial", 10, "bold"), bg="powder blue").grid(row=1,
+                                                                                                            pady=(
+                                                                                                            25, 0),
+                                                                                                            padx=(
+                                                                                                            10, 10))
+        Label(FrmWeddingBooking, text="Name of contact", font=("arial", 10, "bold"), bg="powder blue").grid(row=2,
+                                                                                                            pady=(
+                                                                                                            25, 0),
+                                                                                                            padx=(
+                                                                                                            10, 10))
+        Label(FrmWeddingBooking, text="Address", font=("arial", 10, "bold"), bg="powder blue").grid(row=3, pady=(25, 0),
+                                                                                                    padx=(10, 10))
+        Label(FrmWeddingBooking, text="Contact number", font=("arial", 10, "bold"), bg="powder blue").grid(row=4,
+                                                                                                           pady=(25, 0),
+                                                                                                           padx=(
+                                                                                                           10, 10))
+        Label(FrmWeddingBooking, text="Event Room Number", font=("arial", 10, "bold"), bg="powder blue").grid(row=5,
+                                                                                                              pady=(
+                                                                                                              25, 0),
+                                                                                                              padx=(
+                                                                                                              10, 10))
+        Label(FrmWeddingBooking, text="Date of event", font=("arial", 10, "bold"), bg="powder blue").grid(row=6,
+                                                                                                          pady=(25, 0),
+                                                                                                          padx=(10, 10))
+        Label(FrmWeddingBooking, text="Date of event", font=("arial", 10, "bold"), bg="powder blue").grid(row=7,
+                                                                                                          pady=(25, 0),
+                                                                                                          padx=(10, 10))
+        Label(FrmWeddingBooking, text="Band Name", font=("arial", 10, "bold"), bg="powder blue").grid(row=8,
+                                                                                                      pady=(25, 0),
+                                                                                                      padx=(10, 10))
+        Label(FrmWeddingBooking, text="Number of bedrooms reserved", font=("arial", 10, "bold"), bg="powder blue").grid(
+            row=9, pady=(25, 0), padx=(10, 10))
 
-
-        Label(FrmWeddingBooking, text="Number of guest",font=("arial",10,"bold"),bg="powder blue").grid(row=1, pady=(25, 0),padx=(10, 10))
-        Label(FrmWeddingBooking, text="Name of contact",font=("arial",10,"bold"),bg="powder blue").grid(row=2, pady=(25, 0),padx=(10, 10))
-        Label(FrmWeddingBooking, text="Address",font=("arial",10,"bold"),bg="powder blue").grid(row=3, pady=(25, 0),padx=(10, 10))
-        Label(FrmWeddingBooking, text="Contact number",font=("arial",10,"bold"),bg="powder blue").grid(row=4, pady=(25, 0),padx=(10, 10))
-        Label(FrmWeddingBooking, text="Event Room Number",font=("arial",10,"bold"),bg="powder blue").grid(row=5, pady=(25, 0),padx=(10, 10))
-        Label(FrmWeddingBooking, text="Date of event",font=("arial",10,"bold"),bg="powder blue").grid(row=6, pady=(25, 0),padx=(10, 10))
-        Label(FrmWeddingBooking, text="Date of event",font=("arial",10,"bold"),bg="powder blue").grid(row=7, pady=(25, 0),padx=(10, 10))
-        Label(FrmWeddingBooking, text="Band Name",font=("arial",10,"bold"),bg="powder blue").grid(row=8, pady=(25, 0),padx=(10, 10))
-        Label(FrmWeddingBooking, text="Number of bedrooms reserved",font=("arial",10,"bold"),bg="powder blue").grid(row=9, pady=(25, 0),padx=(10, 10))
-
-        self.EntnumberOfguest = Entry(FrmWeddingBooking,font=("arial",10),width=50)
-        self.EntnameOfContact = Entry(FrmWeddingBooking,font=("arial",10),width=50)
-        self.EntAddress = Entry(FrmWeddingBooking,font=("arial",10),width=50)
-        self.EntContactNumber = Entry(FrmWeddingBooking,font=("arial",10),width=50)
-        self.EntEventRoomNumber = Entry(FrmWeddingBooking,font=("arial",10),width=50)
-        self.EntDateOfEvent = Entry(FrmWeddingBooking,font=("arial",10),width=50)
-        self.EntDateOfBooking = Entry(FrmWeddingBooking,font=("arial",10),width=50)
-        self.EntBandName = Entry(FrmWeddingBooking,font=("arial",10),width=50)
-        self.EntBedroomReserved = Entry(FrmWeddingBooking,font=("arial",10),width=50)
+        self.EntnumberOfguest = Entry(FrmWeddingBooking, font=("arial", 10), width=50, textvar=noGuests)
+        self.EntnameOfContact = Entry(FrmWeddingBooking, font=("arial", 10), width=50, textvar=nameOfContact)
+        self.EntAddress = Entry(FrmWeddingBooking, font=("arial", 10), width=50, textvar=address)
+        self.EntContactNumber = Entry(FrmWeddingBooking, font=("arial", 10), width=50, textvar=contactNo)
+        self.EntEventRoomNumber = Entry(FrmWeddingBooking, font=("arial", 10), width=50, textvar=eventRoomNo)
+        self.EntDateOfEvent = Entry(FrmWeddingBooking, font=("arial", 10), width=50, textvar=dateOfEvent)
+        self.EntDateOfBooking = Entry(FrmWeddingBooking, font=("arial", 10), width=50, textvar=dateOfBooking)
+        self.EntBandName = Entry(FrmWeddingBooking, font=("arial", 10), width=50, textvar=bandName)
+        self.EntBedroomReserved = Entry(FrmWeddingBooking, font=("arial", 10), width=50, textvar=noBedroomsReserved)
 
         self.EntnumberOfguest.grid(row=1, column=1, sticky=W, pady=(25, 0), padx=(0, 25))
         self.EntnameOfContact.grid(row=2, column=1, pady=(25, 0), padx=(0, 25))
@@ -74,16 +106,21 @@ class bookwedding:
         self.EntBandName.grid(row=8, column=1, pady=(25, 0), padx=(0, 25))
         self.EntBedroomReserved.grid(row=9, column=1, pady=(25, 0), padx=(0, 25))
 
+
+
+        btnCloseForm = Button(FrmWeddingBooking, text="Cancel", command=exit)
+
         btnAddBooking = Button(FrmWeddingBooking, text="Add Booking",
-                         command=lambda: test.createWedding(self.EntnumberOfguest.get(), self.EntnameOfContact.get(),
-                                                            self.EntAddress.get(),
-                                                            self.EntContactNumber.get(), self.EntEventRoomNumber.get(),
-                                                            self.EntDateOfEvent.get(),
-                                                            self.EntDateOfBooking.get(), self.EntBandName.get(),
-                                                            self.EntBedroomReserved.get()))
+                               command=lambda: [test.createwedding(self.EntnumberOfguest.get(),
+                                                                  self.EntnameOfContact.get(),
+                                                                  self.EntAddress.get(),
+                                                                  self.EntContactNumber.get(),
+                                                                  self.EntEventRoomNumber.get(),
+                                                                  self.EntDateOfEvent.get(),
+                                                                  self.EntDateOfBooking.get(),
+                                                                  self.EntBandName.get(),
+                                                                  self.EntBedroomReserved.get()), exit])
 
-        btnCloseForm = Button(FrmWeddingBooking , text="Cancel", command=exit)
-
-        btnAddBooking.grid(row=10, column=1, pady=(25, 50), padx=(0, 25),font=("arial",10),sticky=W )
-        btnCloseForm.grid(row=10, column=1, pady=(25, 50), padx=(0, 25) )
+        btnAddBooking.grid(row=10, column=1, pady=(25, 50), padx=(0, 25))
+        btnCloseForm.grid(row=10, column=2, pady=(25, 50), padx=(0, 25))
         FrmWeddingBooking.mainloop()
