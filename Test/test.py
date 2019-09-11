@@ -1,4 +1,4 @@
-from Test import dbTest2
+from Test import dbHelper
 
 
 class Event:
@@ -29,8 +29,13 @@ class Conference(Event):
         return (self.noGuests * self.costPerHead) * self.noOfDays
 
 
+#########################################################################################################################
+
 
 class Party(Event):
+
+    bandPrice = 0
+
     def __init__(self, noGuests, nameOfContact, address, contactNo, eventRoomNo, dateOfEvent, dateOfBooking,
                  bandName, bandPrice):
         super().__init__(noGuests, nameOfContact, address, contactNo, eventRoomNo, dateOfEvent, dateOfBooking,
@@ -41,11 +46,46 @@ class Party(Event):
 
         self.Total = self.noGuests * self.costPerHead
 
+        if self.bandName == "Lil’ Febrezey":
+            self.bandPrice = 100
+
+        elif self.bandName == "Prawn Mendes":
+            self.bandPrice = 250
+
+        elif self.bandName == "AB/CD":
+            self.bandPrice = 500
+
     def CalTotal(self):
         return self.noGuests * self.costPerHead
 
     def Totalvat(self):
         return
+def addParty():
+    noOfGuest = input("enter number of guests\n")
+    nameOfContact = input("enter Name of Contact\n")
+    address = input("enter address\n")
+    contactNo = input("enter Contact Number\n")
+    eventRoomNumber = input("enter event Room Number\n")
+    DatofEvent = input("enter Date of Event\n")
+    DatofBooking = input("enter Date of booking\n")
+    BandName = input("enter band Name\n")
+
+
+    NewParty = Party(int(noOfGuest), nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking,
+                         BandName,)
+    return print(NewParty.nameOfContact)
+
+
+def createParty(noOfGuest, nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking, BandName):
+
+    NewParty = Party(int(noOfGuest), nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking,
+                         BandName)
+    return dbHelper.insertParty(NewParty)
+
+
+
+########################################################################################################
+
 
 class Wedding(Event):
 
@@ -94,7 +134,7 @@ def createwedding(noOfGuest, nameOfContact, address, contactNo, eventRoomNumber,
 
     Newwedding = Wedding(int(noOfGuest), nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking,
                          BandName, bedRoomsRes)
-    return dbTest2.insertwedding(Newwedding)
+    return dbHelper.insertwedding(Newwedding)
 
 
 
