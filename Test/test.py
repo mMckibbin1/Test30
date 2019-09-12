@@ -60,21 +60,6 @@ class Party(Event):
 
     def Totalvat(self):
         return
-def addParty():
-    noOfGuest = input("enter number of guests\n")
-    nameOfContact = input("enter Name of Contact\n")
-    address = input("enter address\n")
-    contactNo = input("enter Contact Number\n")
-    eventRoomNumber = input("enter event Room Number\n")
-    DatofEvent = input("enter Date of Event\n")
-    DatofBooking = input("enter Date of booking\n")
-    BandName = input("enter band Name\n")
-
-
-    NewParty = Party(int(noOfGuest), nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking,
-                         BandName,)
-    return print(NewParty.nameOfContact)
-
 
 def createParty(noOfGuest, nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking, BandName):
     if BandName == "Lil’ Febrezey":
@@ -100,14 +85,14 @@ class Wedding(Event):
     bandPrice = 0
 
     def __init__(self, noGuests, nameOfContact, address, contactNo, eventRoomNo, dateOfEvent, dateOfBooking,
-                 bandName, noBedroomsReserved):
+                 bandName, bandPrice, noBedroomsReserved):
         super().__init__(noGuests, nameOfContact, address, contactNo, eventRoomNo, dateOfEvent, dateOfBooking,
                          costPerHead=0)
         self.bandName = bandName
         self.costPerHead = 15.0
         self.noBedroomsReserved = noBedroomsReserved
 
-        total = self.noGuests * self.costPerHead
+
 
         if self.bandName == "Lil’ Febrezey":
             self.bandPrice = 100
@@ -118,27 +103,12 @@ class Wedding(Event):
         elif self.bandName == "AB/CD":
             self.bandPrice = 500
 
-    def Total(self):
+    def grosstotal(self):
         return float (self.costPerHead * self.noGuests) + self.bandPrice
 
-
-def addWedding():
-    noOfGuest = input("enter number of guests\n")
-    nameOfContact = input("enter Name of Contact\n")
-    address = input("enter address\n")
-    contactNo = input("enter Contact Number\n")
-    eventRoomNumber = input("enter event Room Number\n")
-    DatofEvent = input("enter Date of Event\n")
-    DatofBooking = input("enter Date of booking\n")
-    BandName = input("enter band Name\n")
-    bedRoomsRes = input("enter number of bed rooms you would like\n")
-
-    Newwedding = Wedding(int(noOfGuest), nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking,
-                         BandName, bedRoomsRes)
-    return print(Newwedding.nameOfContact)
-
-
 def createwedding(noOfGuest, nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking, BandName, bedRoomsRes):
+
+    TotalCost = int()
 
     Newwedding = Wedding(int(noOfGuest), nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking,
                          BandName, bedRoomsRes)
@@ -146,7 +116,13 @@ def createwedding(noOfGuest, nameOfContact, address, contactNo, eventRoomNumber,
 
 
 
+def bandPrice(bandName):
+    if bandName == "Lil’ Febrezey":
+        return 100
 
-c1 = Conference(10, "bob", "SERC", "123456789", "A", "06/09/19", "03/09/19", "SERC2", 2, "yes")
+    elif bandName == "Prawn Mendes":
+        return 250
 
+    elif bandName == "AB/CD":
+        return 500
 
