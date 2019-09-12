@@ -12,7 +12,7 @@ class mainMenu:
         mainMenu.config(background="powder blue")
 
         #adding UI elements to the form
-        Label(mainMenu, text="Please select what you would like1 to do...",font=("arial",15,"bold"), bg="powder blue")\
+        Label(mainMenu, text="Please select what you would like to do...",font=("arial",15,"bold"), bg="powder blue")\
             .grid(row=0, pady=(25, 0), padx=(10,10))
 
         btnbookWedding = Button(mainMenu, text="Add wedding Booking", width=23, bg="medium aquamarine",
