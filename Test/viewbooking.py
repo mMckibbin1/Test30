@@ -163,10 +163,10 @@ class frmViewBooking(Tkinter.Frame):
         # Search for dates
         ttk.Label(self.parent, text="Search by date", font=("arial", 10, "bold")).grid(row=2, column=0, sticky=W)
         self.EntStartDate = ttk.Entry(self.parent, font=("arial", 10))
-        self.EntStartDate.grid(row=3, column=0, sticky=W, columnspan=2)
+        self.EntStartDate.grid(row=3, column=0, sticky="ew")#, columnspan=1)
         ttk.Label(self.parent, text="To", font=("arial", 10, "bold")).grid(row=3, column=1)
         self.EntEndDate = ttk.Entry(self.parent, font=("arial", 10))
-        self.EntEndDate.grid(row=3, column=2, sticky=W, columnspan=2)
+        self.EntEndDate.grid(row=3, column=2, sticky="ew")#, columnspan=1)
 
         # check boxes
         self.CbxWedding = Checkbutton(self.parent, text='Weddings', font=("arial", 10))
