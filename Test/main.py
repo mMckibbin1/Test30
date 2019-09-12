@@ -3,6 +3,8 @@ import test
 import GUI
 import dbHelper
 
+dave = 1
+
 #root = tk.Tk()
 
 #app = GUI.bookwedding(root)
