@@ -1,5 +1,5 @@
 import dbHelper
-
+import datetime
 
 class Event:
     def __init__(self, noGuests: object, nameOfContact: object, address: object, contactNo: object, eventRoomNo: object, dateOfEvent: object, dateOfBooking: object,
@@ -28,6 +28,17 @@ class Conference(Event):
     def Total(self):
         return (self.noGuests * self.costPerHead) * self.noOfDays
 
+def createConference(noOfGuest, nameOfContact, address, contactNo,  DatofEvent, eventRoomNumber, CompanyName, NoOfDays, projectorRequired):
+    datofBooking = datetime.datetime.now()
+
+    if projectorRequired == True:
+        projectorRequired = 1
+    else:
+        projectorRequired = 0
+
+    newconference = Conference(int(noOfGuest),nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, datofBooking, CompanyName, NoOfDays, projectorRequired)
+    return dbHelper.insertConference(newconference)
+
 
 #########################################################################################################################
 
@@ -41,19 +52,9 @@ class Party(Event):
         super().__init__(noGuests, nameOfContact, address, contactNo, eventRoomNo, dateOfEvent, dateOfBooking,
                          costPerHead=0)
         self.bandName = bandName
-        self.bandPrice = bandPrice
         self.costPerHead = 15.0
 
-        self.Total = self.noGuests * self.costPerHead
-
-        if self.bandName == "Lil’ Febrezey":
-            self.bandPrice = 100
-
-        elif self.bandName == "Prawn Mendes":
-            self.bandPrice = 250
-
-        elif self.bandName == "AB/CD":
-            self.bandPrice = 500
+        self.bandPrice = CalbandPrice(bandName)
 
     def CalTotal(self):
         return self.noGuests * self.costPerHead
@@ -61,62 +62,46 @@ class Party(Event):
     def Totalvat(self):
         return
 
-def createParty(noOfGuest, nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking, BandName):
-    if BandName == "Lil’ Febrezey":
-        BandPrice = 100
+def createParty(noOfGuest, nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, BandName):
 
-    elif BandName == "Prawn Mendes":
-        BandPrice = 250
-
-    elif BandName == "AB/CD":
-        BandPrice = 500
-
+    BandPrice = 0
+    DatofBooking = datetime.datetime.now()
     NewParty = Party(int(noOfGuest), nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking,
-                         BandName,BandPrice)
+                         BandName, BandPrice)
     return dbHelper.insertParty(NewParty)
 
 
 
-########################################################################################################
-
-
+########################################################################################################################
 class Wedding(Event):
 
     bandPrice = 0
 
     def __init__(self, noGuests, nameOfContact, address, contactNo, eventRoomNo, dateOfEvent, dateOfBooking,
-                 bandName, bandPrice, noBedroomsReserved):
+                 bandName, noBedroomsReserved, bandPrice):
         super().__init__(noGuests, nameOfContact, address, contactNo, eventRoomNo, dateOfEvent, dateOfBooking,
                          costPerHead=0)
+
         self.bandName = bandName
         self.costPerHead = 15.0
         self.noBedroomsReserved = noBedroomsReserved
-
-
-
-        if self.bandName == "Lil’ Febrezey":
-            self.bandPrice = 100
-
-        elif self.bandName == "Prawn Mendes":
-            self.bandPrice = 250
-
-        elif self.bandName == "AB/CD":
-            self.bandPrice = 500
+        self.bandPrice = CalbandPrice(bandName)
 
     def grosstotal(self):
         return float (self.costPerHead * self.noGuests) + self.bandPrice
 
-def createwedding(noOfGuest, nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking, BandName, bedRoomsRes):
+def createwedding(noOfGuest, nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, BandName,bedRoomsRes):
 
-    TotalCost = int()
+    bandPrice = 0
+    DatofBooking = datetime.datetime.now()
 
     Newwedding = Wedding(int(noOfGuest), nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking,
-                         BandName, bedRoomsRes)
+                         BandName, bedRoomsRes, bandPrice)
     return dbHelper.insertwedding(Newwedding)
+########################################################################################################################
 
 
-
-def bandPrice(bandName):
+def CalbandPrice(bandName):
     if bandName == "Lil’ Febrezey":
         return 100
 
@@ -125,4 +110,6 @@ def bandPrice(bandName):
 
     elif bandName == "AB/CD":
         return 500
+    else:
+        return 0
 

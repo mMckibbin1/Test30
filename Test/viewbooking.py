@@ -5,6 +5,7 @@ except ImportError:  # Python 3
     import tkinter as Tkinter
     import tkinter.ttk as ttk
     from tkinter import *
+    import dbHelper
 
 isHidden = False
 
@@ -21,18 +22,21 @@ def hideme(lblNoofGuests):
 
 eventlist = [['wedding', 'Holly'], ['party', 'Tom'], ['conference', 'Bob'], ['']]
 
+weddings = dbHelper.read_from_db()
+
 
 class frmViewBooking(Tkinter.Frame):
 
-    def __init__(self, parent):
+    def __init__(self):
         '''
         Constructor
         '''
-        Tkinter.Frame.__init__(self, parent)
-        self.parent = parent
+        self.root = Tkinter.Tk()
+        Tkinter.Frame.__init__(self, self.root)
+        self.parent = self.root
         self.initialize_user_interface()
 
-        for event in eventlist:
+        for event in weddings:
             self.insert_data(event)
 
     def initialize_user_interface(self):
@@ -317,6 +321,7 @@ class frmViewBooking(Tkinter.Frame):
         self.i = 0
 
         DetailsLabelChange(self, '')
+        self.root.mainloop()
 
     # adding data
     def insert_data(self, data):
@@ -332,7 +337,7 @@ class frmViewBooking(Tkinter.Frame):
 def main():
     root = Tkinter.Tk()
     d = frmViewBooking(root)
-    root.mainloop()
+
 
 
 if __name__ == "__main__":
