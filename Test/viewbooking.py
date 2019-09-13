@@ -173,7 +173,7 @@ class frmViewBooking(Tkinter.Frame):
         # BUTTONS #
         # button hover colour - update
         def on_enterUpdate(e):
-            btnUpdate['background'] = "pale green"
+            btnUpdate['background'] = "PaleTurquoise1"
 
         def on_leaveUpdate(e):
             btnUpdate['background'] = "snow"
@@ -256,7 +256,7 @@ class frmViewBooking(Tkinter.Frame):
 
         # button hover colour - search
         def on_enterSearch(e):
-            btnSearchDate['background'] = "dodger blue"
+            btnSearchDate['background'] = "PaleTurquoise1"
 
         def on_leaveSearch(e):
             btnSearchDate['background'] = "snow"
