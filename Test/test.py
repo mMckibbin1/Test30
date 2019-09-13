@@ -30,16 +30,16 @@ class Conference(Event):
         return (self.noGuests * self.costPerHead) * self.noOfDays
 
 # method to take data from form and add additional required data in order to create object to save to database
-def createConference(noOfGuest, nameOfContact, address, contactNo,  DatofEvent, eventRoomNumber, CompanyName, NoOfDays, projectorRequired):
+def createConference(noOfGuest, nameOfContact, address, contactNo, DateofEvent, eventRoomNumber, CompanyName, NoOfDays, projectorRequired):
 
-    datofBooking = datetime.datetime.now()
+    dateofBooking = datetime.datetime.now()
     ID=None
     if projectorRequired == True:
         projectorRequired = 1
     else:
         projectorRequired = 0
 
-    newconference = Conference(int(noOfGuest),nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, datofBooking, CompanyName, NoOfDays, projectorRequired, ID)
+    newconference = Conference(int(noOfGuest), nameOfContact, address, contactNo, eventRoomNumber, DateofEvent, dateofBooking, CompanyName, NoOfDays, projectorRequired, ID)
     return dbHelper.insertConference(newconference)
 
 
@@ -66,12 +66,12 @@ class Party(Event):
         return
 
 # method to take data from form and add additional required data in order to create object to save to database
-def createParty(noOfGuest, nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, BandName):
+def createParty(noOfGuest, nameOfContact, address, contactNo, eventRoomNumber, DateofEvent, BandName):
     ID = None
     BandPrice = 0
-    DatofBooking = datetime.datetime.now()
-    NewParty = Party(int(noOfGuest), nameOfContact, address, contactNo, eventRoomNumber, DatofEvent, DatofBooking,
-                         BandName, BandPrice, ID)
+    DateofBooking = datetime.datetime.now()
+    NewParty = Party(int(noOfGuest), nameOfContact, address, contactNo, eventRoomNumber, DateofEvent, DateofBooking,
+                     BandName, BandPrice, ID)
     return dbHelper.insertParty(NewParty)
 
 
@@ -99,9 +99,9 @@ def createwedding(noOfGuest, nameOfContact, address, contactNo, eventRoomNumber,
 
     ID = None
     bandPrice = 0
-    DatofBooking = datetime.datetime.now()
+    DateofBooking = datetime.datetime.now()
 
-    Newwedding = Wedding(int(noOfGuest), nameOfContact, address, contactNo, eventRoomNumber, DateofEvent, DatofBooking,
+    Newwedding = Wedding(int(noOfGuest), nameOfContact, address, contactNo, eventRoomNumber, DateofEvent, DateofBooking,
                          BandName, bedRoomsRes, bandPrice, ID)
     return dbHelper.insertwedding(Newwedding)
 ########################################################################################################################

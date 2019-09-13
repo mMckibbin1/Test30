@@ -19,35 +19,57 @@ def connect():
     cursor.close()
     db.close()
 
-
-
-# def show():
-#  connt = sqlite3.connect('events.db')
-#  cursor = connt.cursor()
-#  cursor.execute('SELECT * FROM eventTable')
-#  for row in cursor.fetchall():
-#   print(row)
-
-def read_from_db():
+def read_wedding_db():
     db = sqlite3.connect('events.db')
     cursor = db.cursor()
     cursor.execute('SELECT * FROM weddingTable')
     list = []
     for row in cursor.fetchall():
-        wedding = test.Wedding(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8],row[9])
+        wedding = test.Wedding(row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[0])
 
         list.append(wedding)
 
     cursor.close()
     db.close()
-
     return list
 
-    # cpt = 0  # Counter representing the ID of your code.
-    # for row in cursor:
-    #     # I suppose the first column of your table is ID
-    #     tree.insert('', 'end', text=str(cpt), values=(row[1], row[2], row[3]))
-    #     cpt += 1  # increment the ID
+def read_party_db():
+    db = sqlite3.connect('events.db')
+    cursor = db.cursor()
+    cursor.execute('SELECT * FROM partyTable')
+    list = []
+    for row in cursor.fetchall():
+        party = test.Party(row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[0])
+
+        list.append(party)
+
+    cursor.close()
+    db.close()
+    return list
+
+def read_conference_db():
+    db = sqlite3.connect('events.db')
+    cursor = db.cursor()
+    cursor.execute('SELECT * FROM conferenceTable')
+    list = []
+    for row in cursor.fetchall():
+        conference = test.Conference(row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[0])
+
+        list.append(conference)
+
+    cursor.close()
+    db.close()
+    return list
+
+
+def read_all_from_db():
+    listdb = [[], [], []]
+
+    listdb[0].append(read_wedding_db())
+    listdb[1].append(read_party_db())
+    listdb[2].append(read_conference_db())
+
+    return listdb
 
 
 def insertwedding(wedding):

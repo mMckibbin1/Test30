@@ -28,7 +28,14 @@ def hideme(lblNoofGuests):
 
 eventlist = [['wedding', 'Holly'], ['party', 'Tom'], ['conference', 'Bob'], ['']]
 
-# weddings = dbHelper.read_from_db()
+
+def loadData():
+    datalist = dbHelper.read_all_from_db()
+
+    for list in datalist:
+        for object in list:
+            print(object.noGusets)
+        #frmViewBooking.insert_data(frmViewBooking,object)
 
 
 class frmViewBooking(Tkinter.Frame):
@@ -42,8 +49,7 @@ class frmViewBooking(Tkinter.Frame):
         self.parent = master
         self.initialize_user_interface()
 
-        for event in weddings:
-            self.insert_data(event)
+        loadData()
 
     def initialize_user_interface(self):
         """Draw a user interface allowing the user to type
