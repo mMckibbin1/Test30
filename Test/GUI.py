@@ -52,7 +52,10 @@ class mainMenu:
         main_menu.config(background="powder blue")
 
         #adding UI elements to the form
+
         #Main menu Title
+
+
         Label(main_menu, text="Please select what you would like to do...",font=("arial",15,"bold"), bg="powder blue")\
             .grid(row=0, pady=(25, 0), padx=(10,10))
 
