@@ -1,12 +1,17 @@
-try:
-    import Tkinter
-    import ttk
-
-except ImportError:  # Python 3
-    import tkinter as Tkinter
-    import tkinter.ttk as ttk
-    from tkinter import *
-    import dbHelper
+from tkinter import *
+import tkinter as Tkinter
+import tkinter.ttk as ttk
+import dbHelper
+import GUI
+# try:
+#     import Tkinter
+#     import ttk
+#
+# except ImportError:  # Python 3
+#     import tkinter as Tkinter
+#     import tkinter.ttk as ttk
+#     from tkinter import *
+#     import dbHelper
 
 isHidden = False
 
@@ -28,13 +33,13 @@ eventlist = [['wedding', 'Holly'], ['party', 'Tom'], ['conference', 'Bob'], ['']
 
 class frmViewBooking(Tkinter.Frame):
 
-    def __init__(self):
+    def __init__(self, master):
         '''
         Constructor
         '''
-        self.root = Tkinter.Tk()
-        Tkinter.Frame.__init__(self, self.root)
-        self.parent = self.root
+        # self.root = Tkinter.Tk()
+        Tkinter.Frame.__init__(self, master)
+        self.parent = master
         self.initialize_user_interface()
 
         for event in weddings:
@@ -416,7 +421,7 @@ class frmViewBooking(Tkinter.Frame):
         self.i = 0
 
         DetailsLabelChange(self, '')
-        self.root.mainloop()
+        # self.root.mainloop()
 
     # adding data to treeview
     def insert_data(self, data):
@@ -429,14 +434,19 @@ class frmViewBooking(Tkinter.Frame):
         self.i = self.i + 1
 
 
-def main():
-    root = Tkinter.Tk()
-    d = frmViewBooking(root)
+# def main():
+#     root = Tkinter.Tk()
+#     d = frmViewBooking(root)
 
+def call_viewBookings_popup():
+    top = Toplevel()
+    ui = frmViewBooking(top)
+    top.grab_set()
+    top.wait_window()
+    top.destroy()
 
-
-if __name__ == "__main__":
-    main()
-
+# if __name__ == "__main__":
+#     main()
+#
 
 

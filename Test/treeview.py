@@ -1,21 +1,26 @@
-try:
-    import Tkinter
-    import ttk
-except ImportError:  # Python 3
-    import tkinter as Tkinter
-    import tkinter.ttk as ttk
+from tkinter import *
+import tkinter as Tkinter
+import tkinter.ttk as ttk
+import GUI
+
+# try:
+#     import Tkinter
+#     import ttk
+# except ImportError:  # Python 3
+#     import tkinter as Tkinter
+#     import tkinter.ttk as ttk
 
 
 class Begueradj(Tkinter.Frame):
     '''
     classdocs
     '''
-    def __init__(self, parent):
+    def __init__(self, master):
         '''
         Constructor
         '''
-        Tkinter.Frame.__init__(self, parent)
-        self.parent=parent
+        Tkinter.Frame.__init__(self, master)
+        self.parent=master
         self.initialize_user_interface()
 
     def initialize_user_interface(self):
@@ -72,10 +77,18 @@ class Begueradj(Tkinter.Frame):
         self.i = self.i + 1
 
 
-def main():
-    root=Tkinter.Tk()
-    d=Begueradj(root)
-    root.mainloop()
+# def main():
+#     root=Tkinter.Tk()
+#     d=Begueradj(root)
+#     root.mainloop()
 
-if __name__=="__main__":
-    main()
+# def call_viewBookings_popup():
+#     top = Toplevel()
+#     ui = Begueradj(top)
+#     top.grab_set()
+#     top.wait_window()
+#     top.destroy()
+
+#
+# if __name__=="__main__":
+#     main()
