@@ -23,7 +23,7 @@ def hideme(lblNoofGuests):
 
 eventlist = [['wedding', 'Holly'], ['party', 'Tom'], ['conference', 'Bob'], ['']]
 
-weddings = dbHelper.read_from_db()
+# weddings = dbHelper.read_from_db()
 
 
 class frmViewBooking(Tkinter.Frame):
