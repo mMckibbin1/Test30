@@ -41,10 +41,9 @@ class mainMenu:
         main_menu.title("Main Menu")
         main_menu.config(background="powder blue")
 
-        # adding UI elements to the form
-        Label(main_menu, text="Please select what you would like to do...", font=("arial", 15, "bold"),
-              bg="powder blue") \
-            .grid(row=0, pady=(25, 0), padx=(10, 10))
+        #adding UI elements to the form
+        Label(mainMenu, text="Please select what you would like to do...",font=("arial",15,"bold"), bg="powder blue")\
+            .grid(row=0, pady=(25, 0), padx=(10,10))
 
         btnbookWedding = Button(main_menu, text="Add wedding Booking", width=23, bg="medium aquamarine",
                                 command=call_wedding_popup)
