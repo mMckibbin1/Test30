@@ -1,12 +1,11 @@
-from tkinter import *
-from tkinter import simpledialog
 import sqlite3
-import test
+from Events import Conference, Wedding, Party
 
+dbconn = sqlite3.connect('Database\events.db')
 
 ##set up sqlite
 def connect():
-    db = sqlite3.connect('events.db')
+    db = dbconn
     cursor = db.cursor()
     ##Create a table if none exists
     cursor.execute(
@@ -17,29 +16,27 @@ def connect():
         "CREATE TABLE IF NOT EXISTS conferenceTable(Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Guests REAL, Name TEXT, Address TEXT, Phone TEXT, Room TEXT, EventDate TEXT, BookingDate TEXT, CompanyName TEXT, Days REAL, ProjectRequired INTEGER)")
     db.commit()
     cursor.close()
-    db.close()
 
 def read_wedding_db():
-    db = sqlite3.connect('events.db')
+    db = dbconn
     cursor = db.cursor()
     cursor.execute('SELECT * FROM weddingTable')
     list = []
     for row in cursor.fetchall():
-        wedding = test.Wedding(row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[0])
+        wedding = Wedding.Wedding(row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[0])
 
         list.append(wedding)
 
     cursor.close()
-    db.close()
     return list
 
 def read_party_db():
-    db = sqlite3.connect('events.db')
+    db = dbconn
     cursor = db.cursor()
     cursor.execute('SELECT * FROM partyTable')
     list = []
     for row in cursor.fetchall():
-        party = test.Party(row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[0])
+        party = Party.Party(row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[0])
 
         list.append(party)
 
@@ -48,12 +45,12 @@ def read_party_db():
     return list
 
 def read_conference_db():
-    db = sqlite3.connect('events.db')
+    db = dbconn
     cursor = db.cursor()
     cursor.execute('SELECT * FROM conferenceTable')
     list = []
     for row in cursor.fetchall():
-        conference = test.Conference(row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[0])
+        conference = Conference.Conference(row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[0])
 
         list.append(conference)
 
@@ -73,7 +70,7 @@ def read_all_from_db():
 
 
 def insertwedding(wedding):
-    conn = sqlite3.connect('events.db')
+    conn = dbconn
     with conn:
         cursor = conn.cursor()
         cursor.execute(

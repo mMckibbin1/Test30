@@ -1,29 +1,7 @@
 from tkinter import *
 import tkinter as Tkinter
 import tkinter.ttk as ttk
-import dbHelper
-import GUI
-# try:
-#     import Tkinter
-#     import ttk
-#
-# except ImportError:  # Python 3
-#     import tkinter as Tkinter
-#     import tkinter.ttk as ttk
-#     from tkinter import *
-#     import dbHelper
-
-isHidden = False
-
-
-def hideme(lblNoofGuests):
-    global isHidden
-    if not isHidden:
-        lblNoofGuests.grid_remove()
-        isHidden = True
-    else:
-        lblNoofGuests.grid()
-        isHidden = False
+from Database import dbHelper
 
 
 eventlist = [['wedding', 'Holly'], ['party', 'Tom'], ['conference', 'Bob'], ['']]
@@ -438,21 +416,3 @@ class frmViewBooking(Tkinter.Frame):
                              values=(data))
         # Increment counter
         self.i = self.i + 1
-
-
-# def main():
-#     root = Tkinter.Tk()
-#     d = frmViewBooking(root)
-
-def call_viewBookings_popup():
-    top = Toplevel()
-    ui = frmViewBooking(top)
-    top.grab_set()
-    top.wait_window()
-    top.destroy()
-
-# if __name__ == "__main__":
-#     main()
-#
-
-

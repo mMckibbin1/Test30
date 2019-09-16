@@ -1,7 +1,6 @@
 import calendar
 import datetime
 import sys
-import GUI
 
 if sys.version[0] == '2':
     import Tkinter as tk

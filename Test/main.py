@@ -1,10 +1,5 @@
-import tkinter as tk
-
-import a as a
-
-import test
-import GUI
-import dbHelper
+from Gui import MainMenu
+from Database import dbHelper
 
 # list  = [[],[],[]]
 #
@@ -38,5 +33,5 @@ import dbHelper
 print('')
 
 dbHelper.connect()
-GUI.mainMenu()
+MainMenu.mainMenu()
 
